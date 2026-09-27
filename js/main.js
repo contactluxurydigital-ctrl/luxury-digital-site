@@ -49,8 +49,12 @@
       });
     }
     walk(el, el);
-    el.setAttribute('aria-label', label);
+    // Le texte d'origine reste lisible par les lecteurs d'écran, les lettres découpées sont masquées
     Array.prototype.forEach.call(el.children, function (c) { c.setAttribute('aria-hidden', 'true'); });
+    var sr = document.createElement('span');
+    sr.className = 'sr-only';
+    sr.textContent = label;
+    el.appendChild(sr);
   }
   if (!reduceMotion) document.querySelectorAll('[data-split]').forEach(splitChars);
 
@@ -238,6 +242,7 @@
     // Header : se cache en descendant, revient en remontant
     if (header) {
       header.classList.toggle('is-hidden', y > lastY && y > vh * 0.8);
+      header.classList.toggle('is-scrolled', y > 40);
       lastY = y;
     }
 
@@ -284,7 +289,9 @@
     // Timeline verticale
     if (timeline) {
       var tr = timeline.getBoundingClientRect();
-      if (tr.top < vh && tr.bottom > 0) {
+      var tracking = tr.top < vh && tr.bottom > 0;
+      timeline.classList.toggle('is-tracking', tracking);
+      if (tracking) {
         var fill = clamp((vh * 0.6 - tr.top) / tr.height, 0, 1);
         timeline.style.setProperty('--fill', fill.toFixed(4));
         steps.forEach(function (st) { st.classList.toggle('is-active', st.getBoundingClientRect().top < vh * 0.62); });

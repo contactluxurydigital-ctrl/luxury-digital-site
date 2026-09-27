@@ -77,6 +77,22 @@ grep -rl "262600000000" . --exclude-dir=.git | xargs sed -i 's/262600000000/2626
 
 **Clients** : la liste défilante se modifie dans la section `<!-- 09 PREUVE SOCIALE -->` (le bloc `credits__set` est volontairement répété deux fois pour une boucle parfaite — modifiez les deux, ainsi que la liste `sr-only` juste au-dessus).
 
+## Direction artistique
+
+Lumineuse, éditoriale et minimaliste : ~85 % de sections claires, le foncé réservé au CTA final et au footer.
+
+| Rôle | Couleur |
+|---|---|
+| Fond principal (ivoire chaud) | `#F7F3EE` |
+| Beige nude (sections chiffres / clients, cartes) | `#E8DDD2` |
+| Beige sable (détails, placeholders) | `#D9CBBE` |
+| Vert sauge (section « phrase », remplissages) | `#A8B5A2` |
+| Sauge profonde (accents texte, lisible) | `#5E6E58` |
+| Texte principal (anthracite doux) | `#1E1E1E` |
+| Taupe (texte secondaire, légèrement assombri en `#766A61` pour la lisibilité) | `#8D8177` |
+
+Typographie : Instrument Serif en très grands titres (casse éditoriale, italiques sauge) + Manrope pour les textes et les annotations en petites capitales espacées. Les couleurs se modifient en haut de `css/style.css`.
+
 ## Ce qui est intégré
 
 **Effets** : smooth scrolling (molette desktop), zoom lent du hero au chargement, profondeur du hero à la souris, grain photographique, curseur custom avec « VIEW » sur les photos, titres lettre par lettre, manifeste ligne par ligne au scroll, compteurs animés, ticker horizontal en `mix-blend-mode`, grille éditoriale en parallax, cartes en hover 3D avec photo révélée, phrase illuminée lettre par lettre, timeline animée, galerie (gauche / droite / zoom / sticky), générique clients façon défilé, bouton CTA magnétique, header qui se masque au scroll, barre de progression, transitions douces de couleur de fond entre sections.
@@ -85,6 +101,10 @@ grep -rl "262600000000" . --exclude-dir=.git | xargs sed -i 's/262600000000/2626
 
 **Accessibilité** : `prefers-reduced-motion` respecté (toutes les animations coupées), lien d'évitement, textes découpés restitués via `aria-label`, contrastes de la palette, navigation clavier.
 
+**SEO local** : requêtes ciblées — « community manager La Réunion », « créatrice de contenu La Réunion », « stratégie digitale La Réunion », « shooting photo vidéo entreprise La Réunion », « gestion Instagram entreprise La Réunion » — intégrées naturellement dans le title, la meta description, le h1, l'intro « Mon terrain », les cartes services, la FAQ (6 questions) et le footer (villes d'intervention). Données structurées avec zones desservies (Saint-Denis, Saint-Paul, Saint-Gilles, Saint-Leu, Saint-Pierre, Le Tampon, Saint-André, Saint-Benoît).
+
 **SEO & moteurs IA** : balises title/description, Open Graph + Twitter Card (`og-image.jpg` fournie), canonical, géolocalisation La Réunion, données structurées JSON-LD (`ProfessionalService` / `LocalBusiness`, `Person`, catalogue des 5 services, `FAQPage`), FAQ visible, `robots.txt`, `sitemap.xml`, `llms.txt`, un seul `h1`, hiérarchie de titres propre.
+
+**Scores Lighthouse (mobile)** : Performance 99 · Accessibilité 100 · SEO 100 · Bonnes pratiques 96 (les 4 points manquants viennent uniquement des photos pas encore déposées). Desktop : Performance 100.
 
 **Performance** : zéro framework, ~58 Ko de CSS+JS non minifiés (~15 Ko compressés), polices locales préchargées (`font-display: swap`), images en `loading="lazy"` avec dimensions (pas de décalage de mise en page), hero en `fetchpriority="high"`, calculs de scroll limités aux éléments visibles.
