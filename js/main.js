@@ -135,13 +135,6 @@
     }, { threshold: 0.5 });
     counters.forEach(function (el) { countIO.observe(el); });
 
-    /* Changement subtil de couleur de fond selon la section au centre de l'écran */
-    var themeIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) body.dataset.theme = entry.target.dataset.theme;
-      });
-    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
-    document.querySelectorAll('main [data-theme], footer[data-theme]').forEach(function (el) { themeIO.observe(el); });
   } else {
     document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-in'); });
     counters.forEach(animateCount);
@@ -213,6 +206,7 @@
   var timeline = document.querySelector('[data-timeline]');
   var steps = timeline ? timeline.querySelectorAll('.step') : [];
   var parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  var themed = Array.prototype.slice.call(document.querySelectorAll('main [data-theme], footer[data-theme]'));
   var visible = new Set();
   var lastY = window.scrollY;
   var litCount = 0;
@@ -245,6 +239,14 @@
       header.classList.toggle('is-scrolled', y > 40);
       lastY = y;
     }
+
+    // Couleur de fond : la section (la plus imbriquée) qui passe au centre de l'écran
+    var mid = vh / 2, theme = null;
+    for (var t = 0; t < themed.length; t++) {
+      var tr0 = themed[t].getBoundingClientRect();
+      if (tr0.top <= mid && tr0.bottom > mid) theme = themed[t].dataset.theme;
+    }
+    if (theme && body.dataset.theme !== theme) body.dataset.theme = theme;
 
     // Parallax + entrées (--p = traversée de l'écran, --e = entrée)
     if (!reduceMotion) {

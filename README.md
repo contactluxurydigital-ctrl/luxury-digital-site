@@ -79,17 +79,15 @@ grep -rl "262600000000" . --exclude-dir=.git | xargs sed -i 's/262600000000/2626
 
 ## Direction artistique
 
-Lumineuse, éditoriale et minimaliste : ~85 % de sections claires, le foncé réservé au CTA final et au footer.
+Lumineuse, éditoriale et minimaliste, avec le **vert sauge comme signature**. Répartition mesurée sur toute la hauteur du site : **~50 % clair · ~33 % sauge · ~17 % anthracite**.
 
-| Rôle | Couleur |
+| Couleur | Où |
 |---|---|
-| Fond principal (ivoire chaud) | `#F7F3EE` |
-| Beige nude (sections chiffres / clients, cartes) | `#E8DDD2` |
-| Beige sable (détails, placeholders) | `#D9CBBE` |
-| Vert sauge (section « phrase », remplissages) | `#A8B5A2` |
-| Sauge profonde (accents texte, lisible) | `#5E6E58` |
-| Texte principal (anthracite doux) | `#1E1E1E` |
-| Taupe (texte secondaire, légèrement assombri en `#766A61` pour la lisibilité) | `#8D8177` |
+| Ivoire `#F7F3EE` | Hero, Mon terrain, Services, Galerie, Personnalité |
+| Nude `#E8DDD2` / Sable `#D9CBBE` | Avis, cartes services, placeholders photo |
+| **Sauge `#A8B5A2`** | Fonds pleins : Manifeste, Coulisses (galerie), Clients, FAQ · bande derrière la photo du hero · carte 02 · bloc derrière le portrait · ticker · barre de progression · hovers (boutons, CTA) |
+| **Sauge profond `#5E6E58`** | Fond plein de la section Chiffres · carte 04 · boutons principaux · curseur « View » · accents en italique · lignes fines |
+| Anthracite `#1E1E1E` | La phrase « Votre entreprise… », Méthode, CTA, footer |
 
 Typographie : Instrument Serif en très grands titres (casse éditoriale, italiques sauge) + Manrope pour les textes et les annotations en petites capitales espacées. Les couleurs se modifient en haut de `css/style.css`.
 
