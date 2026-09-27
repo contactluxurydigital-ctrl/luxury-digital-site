@@ -1,0 +1,14 @@
+{
+  "name": "Luxury Digital",
+  "short_name": "Luxury Digital",
+  "description": "Communication digitale, community management et création de contenu à La Réunion.",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F3EFE8",
+  "theme_color": "#171717",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "assets/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
